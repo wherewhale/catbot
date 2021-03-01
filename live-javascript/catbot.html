@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Using Javascript Making Robot">
+    <meta name="author" content="Wha1e">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <title>코묘는 너무 귀여워</title>
+    <script language="javascript">
+        //버튼클릭시 if_javascript 호출합니다.
+        var n = 0;
+
+        function if_javascript(){
+            //txt_Value값을 가져옵니다.    
+            var value = document.getElementById("console").value;
+            var text = document.getElementById("cat_console");
+            
+            if(value == "불켜줘" && n == 0){
+                text.innerHTML="냥냥 냐냐냥?";
+                text.style.background = '#ffffff';
+                n++;
+            }
+            else if(value == "불꺼줘"){
+                document.body.style.background = '#000000';
+                text.style.background = '#ffffff';
+            }
+            else if(value == "불켜줘" && n == 1){
+                text.style.backgroundImage = "url('./static/fire.jpeg')";
+                text.style.backgroundSize = "contain";
+                text.style.backgroundRepeat = "no-repeat";
+                text.style.backgroundPosition = "center";
+                text.innerHTML="";
+                n++;
+            }
+            else if(value == "불켜줘" && n == 2){
+                document.getElementById("light_button").style.display = "block";
+                text.style.backgroundImage = "none";
+                text.innerHTML="냥냐냐냐냥!!";
+                n++;
+            }
+            else if(value == "세젤예는 누구?"){
+                text.style.backgroundImage = "url('./static/sample.jpeg')";
+                text.style.backgroundSize = "contain";
+                text.style.backgroundRepeat = "no-repeat";
+                text.style.backgroundPosition = "center";
+                text.innerHTML="";
+            }
+            else{
+                document.getElementById("typed-strings").innerHTML="<p>코묘가 알아듣지 못한 것 같다.</p><p>다시 한 번 말해보자</p><p><p/>";
+                var typed = new Typed('#typed', {
+                    stringsElement: '#typed-strings'
+                });
+                var typed = new Typed('.element', {
+                    // Waits 1000ms after typing "First"
+                    strings: ['First ^1000 sentence.', 'Second ^2000 sentence.','Third sentence.']
+                });
+            }
+        }
+        function light_up() {
+            document.body.style.background = '#ffffff';
+        }
+        </script>
+</head>
+<body>
+    <div class="layout">
+        <div class="library">
+            <div id="typed-strings">
+            </div>
+            <span id="typed"></span>
+        </div>
+        <div class="cat_says" id="cat_console">
+            냐앙~
+        </div>
+        <div class="cat">
+        </div>
+        <div class="input_layout">
+            <input type="text" id="console" class="input_style">    
+        </div>
+        <div class="button" onclick=if_javascript()>
+            시키기
+        </div>
+        <button class="light_button" id="light_button" onclick=light_up()>😺</button>
+       
+    </div>
+</body>
+</html>
